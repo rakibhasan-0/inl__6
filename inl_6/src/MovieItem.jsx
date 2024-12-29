@@ -6,8 +6,9 @@ import SoundTracks from "./SoundTracks";
 // MovieItem component to display individual movie details
 function MovieItem({ movie, onSelect, isDetailView }) {
   const [showSoundtrack, setShowSoundtrack] = useState(false);
-  const BACKEND_URL =
-    import.meta.env.VITE_BACKEND_URL || "http://localhost:5005";
+ 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5005";
+
 
   console.log("Backend URL:", BACKEND_URL);
 
