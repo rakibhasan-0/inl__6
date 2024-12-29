@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/', // Ensures the app runs at the root of the domain
+  plugins: [react()],
+  base: '/', // Ensures the app runs at the root
   build: {
-    outDir: 'dist', // Default output directory
+    outDir: 'dist',
   },
 });
