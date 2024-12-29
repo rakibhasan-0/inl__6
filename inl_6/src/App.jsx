@@ -12,10 +12,12 @@ function App() {
 
   const API_KEY = 41059430;
 
+  // Function to handle selecting a specific movie
   const handleSearch = async (query) => {
     setLoading(true);
     setError(null);
     try {
+      // Fetch movies based on search query
       const response = await fetch(
         `https://www.omdbapi.com/?apikey=${API_KEY}&s=${encodeURIComponent(
           query
@@ -35,7 +37,7 @@ function App() {
     setLoading(false);
   };
 
-
+  // Function to handle selecting a specific movie
   const handleSelectMovie = async (movie) => {
     setSelectedMovie(null);
     setLoading(true);
@@ -57,6 +59,7 @@ function App() {
     setLoading(false);
   };
 
+  // Function to handle going back to the movie list
   const handleBack = () => {
     setSelectedMovie(null);
     setError(null);
@@ -64,7 +67,6 @@ function App() {
 
   return (
     <div className="App">
-
       <SearchBar onSearch={handleSearch} />
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}

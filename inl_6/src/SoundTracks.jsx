@@ -7,12 +7,14 @@ export default function SoundTracks({ movieTitle, backendUrl }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // useEffect to fetch soundtrack when movieTitle or backendUrl changes
   useEffect(() => {
     if (!movieTitle || !backendUrl) {
       console.error("Missing movieTitle or backendUrl");
       return;
     }
 
+    // Function to fetch soundtrack from Spotify API
     const fetchSoundtrack = async () => {
       setLoading(true);
       setError(null);
@@ -52,7 +54,7 @@ export default function SoundTracks({ movieTitle, backendUrl }) {
 
           const albumData = await albumRes.json();
           console.log("Album Tracks Response:", albumData);
-          
+
           // Remove duplicate tracks
           const uniqueTracks = albumData.items.filter(
             (track, index, self) =>
@@ -74,7 +76,7 @@ export default function SoundTracks({ movieTitle, backendUrl }) {
     fetchSoundtrack();
   }, [movieTitle, backendUrl]);
 
-
+  // Function to fetch Spotify access token
   const getAccessToken = async () => {
     try {
       console.log("Backend URL from the soundtrack:", backendUrl);
